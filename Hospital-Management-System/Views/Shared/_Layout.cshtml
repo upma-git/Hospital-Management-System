@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Service Page</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Hospital Management System", "Index", "Home", null, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Patient Portal", "Index", "Patient", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Doctor Portal", "Index", "Doctor", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container flex-grow-1 py-3">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-dark border-top" style="background-color: #f0f9ff;">
+        <div class="container py-3">
+            <div class="row gy-3 text-center text-md-start">
+
+                <!-- Hospital Info -->
+                <div class="col-md-4">
+                    <h6 class="text-primary fw-bold mb-2">🏥 Healthy Life Hospital</h6>
+                    <p class="small mb-1">Compassionate care with modern technology since 2025.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4">
+                    <h6 class="text-primary fw-bold mb-2">Quick Links</h6>
+                    <div class="d-flex flex-column small">
+                        <a href="/" class="text-dark text-decoration-none mb-1">🏠 Home</a>
+                        <a href="/Doctor" class="text-dark text-decoration-none mb-1">👨‍⚕️ Doctors</a>
+                        <a href="/Patient" class="text-dark text-decoration-none mb-1">🧑‍🤝‍🧑 Patients</a>
+                        <a href="/Contact" class="text-dark text-decoration-none">📞 Contact</a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-4">
+                    <h6 class="text-primary fw-bold mb-2">Contact</h6>
+                    <p class="small mb-1">📍 XXX XXX, New Delhi</p>
+                    <p class="small mb-1">✉️ ugupta.netdev@gmail.com</p>
+                    <p class="small mb-0">📞 +91-9876XXXXXX</p>
+                </div>
+            </div>
+
+            <hr class="my-2" />
+
+            <div class="row small align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0">© @DateTime.Now.Year <strong>Healthy Life Hospital</strong>. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="#" class="text-primary me-2"><i class="fab fa-facebook fa-sm"></i></a>
+                    <a href="#" class="text-info me-2"><i class="fab fa-twitter fa-sm"></i></a>
+                    <a href="#" class="text-danger me-2"><i class="fab fa-instagram fa-sm"></i></a>
+                    <a href="#" class="text-primary"><i class="fab fa-linkedin fa-sm"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

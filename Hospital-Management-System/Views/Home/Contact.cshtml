@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+
+<style>
+    body {
+        background-color: #f0f9f7;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .contact-container {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: auto;
+        margin-top: 40px;
+    }
+
+    h2, h4 {
+        color: #2b6777;
+    }
+
+    p, label {
+        color: #333;
+    }
+
+    a {
+        color: #2b6777;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .form-control {
+        border: 1px solid #b0d9d6;
+    }
+
+    .btn-primary {
+        background-color: #52ab98;
+        border-color: #52ab98;
+    }
+
+        .btn-primary:hover {
+            background-color: #3b8b7a;
+            border-color: #3b8b7a;
+        }
+</style>
+
+<main class="contact-container">
+    <h2 class="mb-4">📞 @ViewBag.Title</h2>
+
+    <div class="row">
+        <!-- Left: Address and Info -->
+        <div class="col-md-6">
+            <h4 class="mb-3">🏥 Our Address</h4>
+            <p>
+                <strong>Hospital Management System</strong><br />
+                XXXX XXXX, New Delhi, India – 110011<br />
+                <strong>Working Hours:</strong> Mon–Sat: 8:00 AM – 8:00 PM
+            </p>
+
+            <h4 class="mt-4 mb-3">📱 Contact Details</h4>
+            <p><strong>Phone:</strong> +91-9876XXXXXX</p>
+            <p><strong>Support Email:</strong> <a href="mailto:ugupta.netdev@gmail.com">ugupta.netdev@gmail.com</a></p>
+            <p><strong>Emergency Email:</strong> <a href="mailto:ugupta.netdev@gmail.com">ugupta.netdev@gmail.com</a></p>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="col-md-6">
+            <h4 class="mb-3">📝 Send Us a Message</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Full Name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Type your message here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">📤 Submit</button>
+            </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Patient>
+@{
+    ViewBag.Title = "Patient List";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 rounded">
+        <div class="card-header bg-info text-white text-center">
+            <h4 class="mb-0"> Patient List</h4>
+        </div>
+
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle mb-0">
+                        <thead class="table-light text-center">
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Illness</th>
+                                <th>Age</th>
+                                <th>Blood Group</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var patient in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@patient.Patient_id</td>
+                                    <td>@patient.Patient_name</td>
+                                    <td>@patient.Illness</td>
+                                    <td class="text-center">@patient.Patient_age</td>
+                                    <td>@patient.Blood_group</td>
+                                    <td class="text-center">
+                                        @Html.ActionLink("Update", "Update", new { id = patient.Patient_id }, new { @class = "btn btn-sm btn-outline-primary" })
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.ActionLink("Delete", "Delete", new { id = patient.Patient_id }, new { @class = "btn btn-sm btn-outline-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning text-center">
+                    No patients found.
+                </div>
+            }
+
+            <div class="text-center mt-4">
+                <a href="/Patient/Create" class="btn btn-success px-4 py-2">
+                    ➕ Register Patient Here
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

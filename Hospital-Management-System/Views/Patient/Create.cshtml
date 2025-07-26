@@ -1,0 +1,40 @@
+﻿@model Hospital_Management_System.Models.Patient
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="text-primary mt-4 mb-4">📝 Patient Registration</h2>
+
+@using (Html.BeginForm("Create", "Patient", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+{
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">@Html.LabelFor(m => m.Patient_name, "Patient Name", new { @class = "form-label fw-bold" })</label>
+            @Html.TextBoxFor(m => m.Patient_name, new { @class = "form-control", placeholder = "Enter full name" })
+            @Html.ValidationMessageFor(m => m.Patient_name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">@Html.LabelFor(m => m.Illness, "Patient Illness", new { @class = "form-label fw-bold" })</label>
+            @Html.TextBoxFor(m => m.Illness, new { @class = "form-control", placeholder = "Enter illness type" })
+            @Html.ValidationMessageFor(m => m.Illness, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">@Html.LabelFor(m => m.Patient_age, "Age", new { @class = "form-label fw-bold" })</label>
+            @Html.TextBoxFor(m => m.Patient_age, new { @class = "form-control", type = "number", placeholder = "Enter age" })
+            @Html.ValidationMessageFor(m => m.Patient_age, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">@Html.LabelFor(m => m.Blood_group, "Blood Group", new { @class = "form-label fw-bold" })</label>
+            @Html.TextBoxFor(m => m.Blood_group, new { @class = "form-control", placeholder = "e.g. A+, B-" })
+            @Html.ValidationMessageFor(m => m.Blood_group, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">✅ Submit</button>
+    <a href="/Patient/Index" class="btn btn-secondary ms-2">🔙 Back</a>
+}

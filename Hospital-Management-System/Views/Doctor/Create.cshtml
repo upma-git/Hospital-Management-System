@@ -1,0 +1,50 @@
+﻿@model Hospital_Management_System.Models.Doctor
+@{
+    ViewBag.Title = "Doctor Registration";
+    
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-info text-white text-center rounded-top-4">
+                    <h3 class="mb-0">🩺 Doctor Registration</h3>
+                </div>
+                <div class="card-body px-5 py-4">
+                    @using (Html.BeginForm("Create", "Doctor", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.doctor_name, "Doctor Name",new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.doctor_name, new { @class = "form-control", placeholder = "Enter Doctor's Full Name" })
+                            @Html.ValidationMessageFor(model => model.doctor_name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.doctor_age, "Doctor Age",new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.doctor_age, new { @class = "form-control", type = "number", placeholder = "Enter Age" })
+                            @Html.ValidationMessageFor(model => model.doctor_age, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.doctor_qualification, "Qualification", new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.doctor_qualification, new { @class = "form-control", placeholder = "e.g. MBBS, MD" })
+                            @Html.ValidationMessageFor(model => model.doctor_qualification, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.specialization, "Specialization", new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.specialization, new { @class = "form-control", placeholder = "e.g. Cardiologist, Neurologist" })
+                            @Html.ValidationMessageFor(model => model.specialization, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success px-4">✅ Submit</button>
+                            <a href="@Url.Action("Index", "Doctor")" class="btn btn-secondary px-4 ms-2">🔙 Back</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
