@@ -1,0 +1,51 @@
+﻿@model Hospital_Management_System.Models.Appointment
+@{
+    ViewBag.Title = "Appointment Update Page";
+
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-info text-white text-center rounded-top-4">
+                    <h3 class="mb-0">🩺 Appointment Update Page</h3>
+                </div>
+                <div class="card-body px-5 py-4">
+                    @using (Html.BeginForm("Update", "Appointment", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(model => model.Appointment_Id)
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Doctor_Id, new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.Doctor_Id, new { @class = "form-control", placeholder = "Enter Doctor's ID" })
+                            @Html.ValidationMessageFor(model => model.Doctor_Id, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Patient_Id, new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.Patient_Id, new { @class = "form-control", type = "number", placeholder = "Enter Patient's ID" })
+                            @Html.ValidationMessageFor(model => model.Patient_Id, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Information, new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.Information, new { @class = "form-control", placeholder = "e.g. Add Illness" })
+                            @Html.ValidationMessageFor(model => model.Information, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Appointment_Date, new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(model => model.Appointment_Date, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                            @Html.ValidationMessageFor(model => model.Appointment_Date, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success px-4">✅ Update</button>
+                            <a href="@Url.Action("Index", "Appointment")" class="btn btn-secondary px-4 ms-2">🔙 Back</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

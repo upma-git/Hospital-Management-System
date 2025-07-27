@@ -127,12 +127,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AppointmentMarkerController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\AppointmentContext.cs" />
+    <Compile Include="Models\AppointmentMarker.cs" />
+    <Compile Include="Models\AppointmentMarkerContext.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\DoctorContext.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -196,9 +202,14 @@
     <Content Include="Views\Doctor\Create.cshtml" />
     <Content Include="Views\Doctor\Update.cshtml" />
     <Content Include="Views\Patient\Update.cshtml" />
+    <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\Appointment\Update.cshtml" />
+    <Content Include="Views\AppointmentMarker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApmtMarker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

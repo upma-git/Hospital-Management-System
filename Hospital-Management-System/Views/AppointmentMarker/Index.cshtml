@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Hospital_Management_System.Models.Appointment>
+
+@{
+    ViewBag.Title = "Mark Appointments";
+    var markedId = TempData["MarkedId"] != null ? Convert.ToInt32(TempData["MarkedId"]) : 0;
+    var markedStatus = TempData["MarkedStatus"] as string;
+}
+
+<h2 class="text-primary">Mark Appointments</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Doctor ID</th>
+            <th>Patient ID</th>
+            <th>Date</th>
+            <th>Information</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Appointment_Id</td>
+                <td>@item.Doctor_Id</td>
+                <td>@item.Patient_Id</td>
+                <td>@item.Appointment_Date.ToShortDateString()</td>
+                <td>@item.Information</td>
+                <td colspan="2">
+                    @using (Html.BeginForm("Mark", "AppointmentMarker", FormMethod.Post))
+                    {
+                        @Html.Hidden("appointmentId", item.Appointment_Id)
+
+                        var selectedStatus = (item.Appointment_Id == markedId) ? markedStatus : "";
+
+                        <div class="form-inline">
+                            @Html.DropDownList("status",
+                                new SelectList(new[] { "Approved", "Rejected" }, selectedStatus),
+                                "Select",
+                                new { @class = "form-control mr-2" })
+
+                            <input type="submit" value="Mark" class="btn btn-sm btn-primary ml-2" />
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
