@@ -11,11 +11,14 @@ namespace Hospital_Management_System.Controllers
     public class DoctorController : Controller
     {
         DoctorContext doctorContext = new DoctorContext();
+        [Authorize(Roles = "Doctor,Admin")]
+
         public ActionResult Create()
         {
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "Doctor,Admin")]
         public ActionResult Index()
         {
             var allDoctors = doctorContext.Doctors.ToList();
@@ -23,6 +26,7 @@ namespace Hospital_Management_System.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Doctor,Admin")]
         public ActionResult Create(Doctor d)
 
         {
@@ -36,6 +40,7 @@ namespace Hospital_Management_System.Controllers
 
         }
         [HttpPost]
+        [Authorize(Roles = "Doctor,Admin")]
         public ActionResult Update(Doctor updatedDoctor)
         {
             var existingDoctor = doctorContext.Doctors.Find(updatedDoctor.doctor_id);
@@ -48,6 +53,7 @@ namespace Hospital_Management_System.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Doctor,Admin")]
         public ActionResult Update(int id)
         {
             Doctor d = doctorContext.Doctors.Find(id);
@@ -57,6 +63,7 @@ namespace Hospital_Management_System.Controllers
             }
             return View(d);
         }
+        [Authorize(Roles = "Doctor,Admin")]
         public ActionResult Delete(int id)
         {
             Doctor d = doctorContext.Doctors.Find(id);

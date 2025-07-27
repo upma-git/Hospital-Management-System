@@ -11,15 +11,18 @@ namespace Hospital_Management_System.Controllers
     {
         AppointmentContext appointmentContext = new AppointmentContext();
         // GET: Appointment
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Index()
         {
             return View(appointmentContext.appointments.ToList());
         }
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Create(Appointment ap)
         {
             if(ModelState.IsValid)
@@ -31,6 +34,7 @@ namespace Hospital_Management_System.Controllers
             return View(ap);
         }
         [HttpPost]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Update(Appointment updatedApmnt)
         {
             var existingApmnt = appointmentContext.appointments.Find(updatedApmnt.Appointment_Id);
@@ -43,6 +47,7 @@ namespace Hospital_Management_System.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Update(int id)
         {
             Appointment apmnt = appointmentContext.appointments.Find(id);
@@ -52,6 +57,7 @@ namespace Hospital_Management_System.Controllers
             }
             return View(apmnt);
         }
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Delete(int id)
         {
             Appointment apmnt = appointmentContext.appointments.Find(id);

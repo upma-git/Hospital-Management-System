@@ -14,11 +14,13 @@ namespace Hospital_Management_System.Controllers
         
 
         PatientContext patientContext = new PatientContext();
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Create()
         {
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Index()
         {
             var allpatients = patientContext.Patients.ToList();
@@ -26,6 +28,7 @@ namespace Hospital_Management_System.Controllers
         }
        
         [HttpPost]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Create(Patient p)
         {
             if(ModelState.IsValid)
@@ -38,6 +41,7 @@ namespace Hospital_Management_System.Controllers
             
         }
         [HttpPost]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Update(Patient updatedPatient)
         {
             var existingPatient = patientContext.Patients.Find(updatedPatient.Patient_id);
@@ -49,6 +53,7 @@ namespace Hospital_Management_System.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Update(int id)
         {
             Patient d = patientContext.Patients.Find(id);
@@ -58,6 +63,7 @@ namespace Hospital_Management_System.Controllers
             }
             return View(d);
         }
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Delete(int id)
         {
             Patient d = patientContext.Patients.Find(id);

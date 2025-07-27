@@ -18,14 +18,49 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Patient Portal", "Index", "Patient", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Doctor Portal", "Index", "Doctor", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Appointment Portal", "Index", "Appointment", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Appointment Marker", "Index", "AppointmentMarker", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                <!-- Left Links -->
+                <ul class="navbar-nav me-auto">
+                   
+                        @if (Session["role"] != null && 
+                            (Session["role"].ToString() == "Doctor" || Session["role"].ToString() == "Admin"))
+                        {
+                            <li class="nav-item">@Html.ActionLink("Doctor Portal", "Index", "Doctor", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Appointment Marker", "Index", "AppointmentMarker", null, new { @class = "nav-link" })</li>
+
+                        }
+                        @if (Session["role"] != null &&
+                            (Session["role"].ToString() == "Patient" || Session["role"].ToString() == "Admin"))
+                        {
+                            <li class="nav-item">@Html.ActionLink("Patient Portal", "Index", "Patient", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Appointment Portal", "Index", "Appointment", null, new { @class = "nav-link" })</li>
+                        }
+
+                        <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    
+                </ul>
+
+                <!-- Right Links (Login/Register/Logout) -->
+                <ul class="navbar-nav">
+                    @if (Session["role"] == null)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <!-- Show Logout and Welcome if logged in -->
+                        <li class="nav-item">
+                            <span class="nav-link text-success">Welcome, @Session["username"]!</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="@Url.Action("Logout", "Account")">Logout</a>
+                        </li>
+                    }
+
+                    
                 </ul>
             </div>
         </div>

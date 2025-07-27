@@ -9,6 +9,7 @@ namespace Hospital_Management_System.Controllers
     {
         AppointmentMarkerContext markerContext = new AppointmentMarkerContext();
         AppointmentContext apmntDbContext = new AppointmentContext();
+        [Authorize(Roles = "Doctor,Admin")]
 
         // GET: AppointmentMarker
         public ActionResult Index()
@@ -18,6 +19,8 @@ namespace Hospital_Management_System.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Doctor,Admin")]
+
         public ActionResult Mark(int appointmentId, string status)
         {
             var apmnt = apmntDbContext.appointments.Find(appointmentId);
