@@ -1,50 +1,90 @@
 ﻿@{
-    ViewBag.Title = "Hospital Management Service";   
+    ViewBag.Title = "Hospital Management System";
 }
 
 <div class="container mt-5">
     <div class="text-center mb-5">
-        <h1 class="display-4 text-primary fw-bold">🏥 @ViewBag.Title</h1>
+        <h1 class="display-4 fw-bold ">
+            <span style="font-size: inherit; vertical-align: middle; color: inherit; filter: none;">🏥</span>
+            <span style="color: inherit;">@ViewBag.Title</span>
+        </h1>
         <p class="lead text-secondary">
-            Welcome to our hospital management system. Explore patient and doctor registration below.
+            Welcome to our advanced hospital management system. Register as a patient or doctor and get started today.
         </p>
     </div>
 
     <div class="row g-4 justify-content-center">
-        <!-- Patient Registration Section -->
+        <!-- Patient Registration Card -->
         <div class="col-md-6 col-lg-5">
-            <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card shadow-lg border-0 rounded-4 h-100 card-hover-patient">
                 <div class="card-body p-4">
-                    <h4 class="text-success text-center mb-3">📅 Patient Registration</h4>
-                    <p class="text-muted fs-5">
-                        Book your appointments quickly and easily with our online system.
+                    <div class="text-center mb-3">
+                        <span class="badge bg-success fs-5 px-3 py-2 rounded-pill"><i class="fas fa-user-plus me-2"></i>Patient</span>
+                    </div>
+                    <h4 class="text-center text-success mb-3">Quick & Easy Booking</h4>
+                    <p class="text-muted">
+                        Register to book appointments and consult top doctors from departments like Cardiology, Neurology, Orthopedics, and Pediatrics.
                     </p>
-                    <p class="text-muted fs-6">
-                        Patients can register to access expert medical care in various specializations such as Cardiology, Neurology, Orthopedics, and Pediatrics.
+                    <p class="text-muted">
+                        Your health is our mission. Start your journey with expert care now.
                     </p>
-                    <p class="text-muted fs-6">
-                        Your health is our priority. Register today and consult with top doctors.
-                    </p>
-                </div>
+                    @if (Session["role"] == null)
+                    {
+                        <div class="text-center mt-4">
+                            <a href="/Account/Register" class="btn btn-success rounded-pill px-4">Register as Patient</a>
+                        </div>
+                    }
+                    </div>
             </div>
         </div>
 
-        <!-- Doctor Registration Section -->
+        <!-- Doctor Registration Card -->
         <div class="col-md-6 col-lg-5">
-            <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card shadow-lg border-0 rounded-4 h-100 card-hover-doctor">
                 <div class="card-body p-4">
-                    <h4 class="text-info text-center mb-3">🩺 Doctor Registration</h4>
-                    <p class="text-muted fs-5">
-                        Are you a medical professional? Join our dedicated team of doctors.
+                    <div class="text-center mb-3">
+                        <span class="badge bg-info fs-5 px-3 py-2 rounded-pill"><i class="fas fa-user-md me-2"></i>Doctor</span>
+                    </div>
+                    <h4 class="text-center text-info mb-3">Join Our Expert Panel</h4>
+                    <p class="text-muted">
+                        Medical professionals can register to join our mission. Work alongside top talent in fields like General Medicine, Surgery, and Pediatrics.
                     </p>
-                    <p class="text-muted fs-6">
-                        We welcome qualified specialists from all fields — General Medicine, Surgery, Pediatrics, Cardiology, and more.
+                    <p class="text-muted">
+                        Become part of a hospital committed to quality and compassion.
                     </p>
-                    <p class="text-muted fs-6">
-                        Help us provide world-class care by registering as a doctor in our hospital network.
-                    </p>
-                </div>
+                    @if (Session["role"] == null)
+                    {
+                        <div class="text-center mt-4">
+                            <a href="/Account/Register" class="btn btn-info text-white rounded-pill px-4">Register as Doctor</a>
+                        </div>
+                    }
+                    </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(to right, #0d6efd, #198754);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .card-hover-patient:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 30px rgba(25, 135, 84, 0.3);
+    }
+
+    .card-hover-doctor:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 30px rgba(13, 202, 240, 0.3);
+    }
+
+    a.btn:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s;
+    }
+</style>

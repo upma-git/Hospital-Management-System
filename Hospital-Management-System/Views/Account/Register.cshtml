@@ -4,35 +4,45 @@
     ViewBag.Title = "Register";
 }
 
-<h2 class="text-primary mb-3">📝 Register</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center text-success mb-4">📝 Register</h3>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
 
-    <div class="mb-3">
-        @Html.LabelFor(m => m.username)
-        @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "Enter username" })
-        @Html.ValidationMessageFor(m => m.username)
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-semibold">👤 Username</label>
+                            @Html.TextBoxFor(m => m.username, new { @class = "form-control rounded-3", placeholder = "Enter username" })
+                            @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-semibold">🔒 Password</label>
+                            @Html.PasswordFor(m => m.password, new { @class = "form-control rounded-3", placeholder = "Enter password" })
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-semibold">📧 Email</label>
+                            @Html.TextBoxFor(m => m.email, new { @class = "form-control rounded-3", placeholder = "Enter email" })
+                            @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label fw-semibold">🛡️ Role</label>
+                            @Html.DropDownListFor(m => m.role, new SelectList(new[] { "Admin", "Doctor", "Patient" }), "Select Role", new { @class = "form-control rounded-3" })
+                            @Html.ValidationMessageFor(m => m.role, "", new { @class = "text-danger" })
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 fw-bold rounded-3">Register</button>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="mb-3">
-        @Html.LabelFor(m => m.password)
-        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Enter password" })
-        @Html.ValidationMessageFor(m => m.password)
-    </div>
-
-    <div class="mb-3">
-        @Html.LabelFor(m => m.email)
-        @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "Enter email" })
-        @Html.ValidationMessageFor(m => m.email)
-    </div>
-
-    <div class="mb-3">
-        @Html.LabelFor(m => m.role)
-        @Html.DropDownListFor(m => m.role, new SelectList(new[] { "Admin", "Doctor", "Patient" }), "Select Role", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.role)
-    </div>
-
-    <button type="submit" class="btn btn-success">Register</button>
-}
+</div>

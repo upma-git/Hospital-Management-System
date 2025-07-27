@@ -12,10 +12,7 @@ namespace Hospital_Management_System.Controllers
     {
         AccountContext acDb = new AccountContext();
         // GET: Account
-        public ActionResult Index()
-        {
-            return View();
-        }
+     
 
         public ActionResult Register()
         {
